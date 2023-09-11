@@ -1,4 +1,4 @@
-## Google - ASL Fingerspelling Recognition 1st place solution
+## TRADUCTOR DE LENGUAJE DE SEÑAS PERUANO
 
 This repository contains the codebase to reproduce the winning solution to the Google - ASL Fingerspelling Recognition competition on kaggle. 
 
