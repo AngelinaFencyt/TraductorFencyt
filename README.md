@@ -27,62 +27,62 @@ pip install -r requirements.txt
 Por defecto el entrenamiento se registra a través de neptune.ai en un proyecto quickstart. Si quieres usar tu propio proyecto neptune establece `cfg.neptune_project` en `configs/cfg_1.py` y `configs/cfg_2.py`. 
 
       
-### 1. Train round 1
+### 1. Entrenar ronda 1
 
-Train 4 folds of cfg_1:
+Entrena 4 pliegues de cfg_1:
 
 ```
 python train.py -C cfg_1
 python train.py -C cfg_1 --fold 1
-python train.py -C cfg_1 --fold 2
-python train.py -C cfg_1 --fold 3
+python tren.py -C cfg_1 --pliegue 2
+python tren.py -C cfg_1 --pliegue 3
 ```
 
-Add oof predictions from step 1. to train_folded.csv and concatenate with supplemental metadata:
+Añada las predicciones oof del paso 1. a train_folded.csv y concaténelas con metadatos suplementarios:
 
 ```
 python scripts/get_train_folded_oof_supp.py 
 ```
 
-### 2. Train round 2
+### 2. Entrenar ronda 2
 
-Train 2x fullfit seeds of cfg_2:
+Entrena 2x semillas fullfit de cfg_2:
 
 ```
 python train.py -C cfg_2 --fold -1
 python train.py -C cfg_2 --fold -1
 ```
 
-### 3. TF-Lite conversion
+### 3. Conversión a TF-Lite
 
-Transfer the resulting weights to a tensorflow equivalent ensemble model and export to tf-lite:
+Transferir los pesos resultantes a un modelo ensemble equivalente a tensorflow y exportar a tf-lite:
 
 ```
 python scripts/convert_cfg_2_to_tf_lite.py  
 ```
 
 
-The final model is saved under
+El modelo final se guarda en
 
 ```
-datamount/weights/cfg_2/fold-1/model.tflite 
+datamount/pesos/cfg_2/fold-1/model.tflite 
 datamount/weights/cfg_2/fold-1/inference_args.json
 ```
-and can be added to a kaggle kernel and submitted.
+y puede ser añadido a un kaggle kernel y enviado.
 
 
-## References
+## Referencias
 
-We adapted squeezeformer components from these two great repositories: 
+Hemos adaptado componentes squeezeformer de estos dos grandes repositorios: 
 
 - SqueezeFormer (tensorflow) https://github.com/kssteven418/Squeezeformer
 - SqueezeFormer (pytorch) https://github.com/upskyy/Squeezeformer/
 
-Check out the SqueezeFormer [paper](https://arxiv.org/pdf/2206.00888.pdf) for more details on the architecture.
+Echa un vistazo al SqueezeFormer [paper](https://arxiv.org/pdf/2206.00888.pdf) para más detalles sobre la arquitectura.
 
-We copied and adapted the TFSpeech2TextDecoder from https://github.com/huggingface/transformers/ to support caching and used components related to LLama Attention.
+Copiamos y adaptamos el TFSpeech2TextDecoder de https://github.com/huggingface/transformers/ para soportar caché y usamos componentes relacionados con LLama Attention.
 
-## Paper 
+## Documento 
 
 TBD
       
