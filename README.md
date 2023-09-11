@@ -16,12 +16,10 @@ Utilizamos el  `nvcr.io/nvidia/pytorch:23.07-py3` contendedor del [ngc catalog](
 `docker run --gpus all -it --rm nvcr.io/nvidia/pytorch:23.07-py3`
 
 Dentro del contenedor clone este repositorio e instale los paquetes necesarios con ```
-git clone https://github.com/AngelinaFencyt/TraductorFencyt.git
+git clone https://github.com/AngelinaFencyt/TraductorFencyt.git '''
 cd kaggle-asl-fingerspelling-1st-place-solution
 pip install -r requirements.txt
-```
 
-```
 
 
 Por defecto el entrenamiento se registra a través de neptune.ai en un proyecto quickstart. Si quieres usar tu propio proyecto neptune establece `cfg.neptune_project` en `configs/cfg_1.py` y `configs/cfg_2.py`. 
