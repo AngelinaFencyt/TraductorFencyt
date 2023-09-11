@@ -1,4 +1,4 @@
-## TRADUCTOR DE LENGUAJE DE SEÑAS PERUANO
+## SIGNA : TRADUCTOR DE LENGUAJE DE SEÑAS PERUANO
 
 Nuestra solución se basa en una arquitectura única de codificador-decodificador. El codificador es una versión significativamente mejorada de Squeezeformer, en la que la extracción de características se ha adaptado para manejar puntos de referencia de la tubería media en lugar de señales del habla. El descodificador es un simple transformador de dos capas. Además, predijimos una puntuación de confianza para identificar ejemplos corruptos que pueden ser útiles para el postprocesamiento. También introdujimos aumentos eficientes y creativos para regularizar el modelo, siendo los más importantes CutMix, FingerDropout y TimeStretch, DecoderInput Masking. Utilizamos pytorch para desarrollar y entrenar nuestros modelos y luego tradujimos manualmente la arquitectura del modelo y portamos los pesos a tensorflow, desde donde exportamos a tf-lite.
 
@@ -10,9 +10,9 @@ Nuestra solución se basa en una arquitectura única de codificador-decodificado
 
 
 
-## Preparations
+## PREPARACIÓN
 
-We used the `nvcr.io/nvidia/pytorch:23.07-py3` container from the [ngc catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) to have a consistent environment between team members. You can run it via
+Utilizamos el  `nvcr.io/nvidia/pytorch:23.07-py3` contendedor del [ngc catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) to have a consistent environment between team members. You can run it via
 
 `docker run --gpus all -it --rm nvcr.io/nvidia/pytorch:23.07-py3`
 
