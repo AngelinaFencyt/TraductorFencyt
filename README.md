@@ -1,10 +1,5 @@
 ## TRADUCTOR DE LENGUAJE DE SEÑAS PERUANO
 
-This repository contains the codebase to reproduce the winning solution to the Google - ASL Fingerspelling Recognition competition on kaggle. 
-
-Competiton website: [link](https://www.kaggle.com/competitions/asl-fingerspelling).  
-1st place solution summary: [link](https://www.kaggle.com/competitions/asl-fingerspelling/discussion/434485). 
-
 Our solution is based on a single encoder-decoder architecture. The encoder is a significantly improved version of Squeezeformer, where the feature extraction was adapted to handle mediapipe landmarks instead of speech signals. The decoder is a simple 2-layer transformer. We additionally predicted a confidence score to identify corrupted examples which can be useful for post-processing. We also introduced efficient and creative augmentations to regularize the model, where the most important ones were CutMix, FingerDropout and TimeStretch, DecoderInput Masking. We used pytorch for developing and training our models and then manually translated model architecture and ported weights to tensorflow from which we exported to tf-lite.
 
 ![](architecture_overview.png)
