@@ -12,42 +12,19 @@ Nuestra solución se basa en una arquitectura única de codificador-decodificado
 
 ## PREPARACIÓN
 
-Utilizamos el  `nvcr.io/nvidia/pytorch:23.07-py3` contendedor del [ngc catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) to have a consistent environment between team members. You can run it via
-
+Utilizamos el  `nvcr.io/nvidia/pytorch:23.07-py3` contendedor del [ngc catalog](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) para tener un entorno coherente entre los miembros del equipo. Puede ejecutarlo a través de:
 `docker run --gpus all -it --rm nvcr.io/nvidia/pytorch:23.07-py3`
 
-Within the container clone this repository and install necessary packages with 
-```
-git clone https://github.com/ChristofHenkel/kaggle-asl-fingerspelling-1st-place-solution
+Dentro del contenedor clone este repositorio e instale los paquetes necesarios con ```
+git clone https://github.com/AngelinaFencyt/TraductorFencyt.git
 cd kaggle-asl-fingerspelling-1st-place-solution
 pip install -r requirements.txt
 ```
 
-We have preprocessed the dataset into numpy format files for fast loading. In order to download the data you will need a kaggle [user](https://www.kaggle.com/) and to set up the [kaggle-api](https://github.com/Kaggle/kaggle-api).
-You can check the preprocessing of the data [here](https://www.kaggle.com/code/darraghdog/asl-fingerspelling-preprocessing-train) and [here](https://www.kaggle.com/code/darraghdog/asl-fingerspelling-preprocessing-supplemental). 
-
-```
-# Download the train and supplemental data
-cd datamount/
-
-kaggle datasets download -d darraghdog/asl-fingerspelling-preprocessing-train-dataset
-unzip -n asl-fingerspelling-preprocessing-train-dataset.zip
-rm asl-fingerspelling-preprocessing-train-dataset.zip
-kaggle datasets download -d darraghdog/asl-fingerspelling-preprocessed-supp-dataset
-unzip -n asl-fingerspelling-preprocessed-supp-dataset.zip 
-mv supplemental_landmarks/* train_landmarks_npy/
-rm asl-fingerspelling-preprocessed-supp-dataset.zip
-rm -rf supplemental_landmarks/
-cd ..
 ```
 
-By default training is logged via neptune.ai to a quickstart project. If you want to use your own neptune project set `cfg.neptune_project` in `configs/cfg_1.py` and `configs/cfg_2.py`. A blog post discussing how we used neptune for this competition can be found [here](https://www.medium.com/@darragh.hanley_94135/mastering-mlops-with-neptune-ai-84e635d36bf2) . 
 
-
-
-## Reproducing 1st place solution
-
-In order to reproduce the 1st place solution, two rounds of training are necesseary. In the first round we train a smaller model in order to generate out-of-fold (OOF) predictions which are used as auxiliary target for round two. Finally, model architecture of round two is translated to tensorflow and weights are transfered before we export to a tf-lite model. Note that, for users convinience, we provide the output of step 1 as `datamount/train_folded_oof_supp.csv` so only step 2& 3 would need to be performed to get the final model weights.
+Por defecto el entrenamiento se registra a través de neptune.ai en un proyecto quickstart. Si quieres usar tu propio proyecto neptune establece `cfg.neptune_project` en `configs/cfg_1.py` y `configs/cfg_2.py`. 
 
       
 ### 1. Train round 1
