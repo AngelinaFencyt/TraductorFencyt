@@ -7,9 +7,9 @@ Nuestra solución se basa en una arquitectura única de codificador-decodificado
 
 ## PROTOTIPO
 Observa la aplicación de forma real
-```
-https://www.figma.com/proto/xW2Ub4t3854gFxsl8ZPPW4/Untitled?type=design&node-id=2-6&t=lGWZMlX7T8NxsqmK-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=2%3A6&mode=design
-```
+
+[paper](https://www.figma.com/proto/xW2Ub4t3854gFxsl8ZPPW4/Untitled?type=design&node-id=2-6&t=lGWZMlX7T8NxsqmK-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=2%3A6&mode=design)
+
 
 
 
